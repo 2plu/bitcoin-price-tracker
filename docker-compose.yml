@@ -1,10 +1,36 @@
 version: '3.8'
 services:
-  postgres:
+  app:
+    container_name: bitcoin-price-tracker-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    depends_on:
+      - bitcoin-db
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - bitcoin-network
+    
+  bitcoin-db:
     image: postgres:latest
+    container_name: bitcoin-price-tracker-db
     environment:
       POSTGRES_DB: bitcoin
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - bitcoin-network
+
+volumes:
+  pgdata:
+
+networks:
+  bitcoin-network:

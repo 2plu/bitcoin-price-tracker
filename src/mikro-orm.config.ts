@@ -7,15 +7,12 @@ const config: Options = {
   dbName: 'bitcoin',
   user: 'user',
   password: 'password',
-  host: 'localhost',
+  host: 'bitcoin-db',
   port: 5432,
   entities: [PairPrice],
   migrations: {
     tableName: 'pair_price', // Nombre de la tabla para almacenar las migraciones
     path: './src/migrations', // Ruta al directorio con los archivos de migración
-    transactional: true, // Indica si las migraciones deben ejecutarse en transacciones
-    disableForeignKeys: true, // Deshabilita las claves foráneas durante las migraciones (opcional)
-
   },
   debug: true
 };
