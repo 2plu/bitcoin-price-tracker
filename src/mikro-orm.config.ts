@@ -14,7 +14,7 @@ const config: Options = {
     tableName: 'pair_price', // Nombre de la tabla para almacenar las migraciones
     path: './src/migrations', // Ruta al directorio con los archivos de migración
   },
-  debug: true
+  debug: true,
 };
 
 export default config;

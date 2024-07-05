@@ -6,10 +6,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { PairPrice } from './entities/pair-price.entity';
 
 @Module({
-  imports: [
-    HttpModule,
-    MikroOrmModule.forFeature([PairPrice]),
-  ],
+  imports: [HttpModule, MikroOrmModule.forFeature([PairPrice])],
   providers: [PairPricesService],
   controllers: [PairPricesController],
 })
